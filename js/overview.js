@@ -9,7 +9,7 @@ document.getElementById('logout').addEventListener('click', function () {
 })
 document.getElementById('dashboard').addEventListener('click', function () {
 //   window.location.href="dashboard.html"
-window.location.href = "dashboard.html";
+window.location.href = "index.html";
 })
 
 
