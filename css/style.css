@@ -35,7 +35,7 @@ body,input{
 	height: 300px;
 	width: 500px;
 	margin-left: -40px; 
-	border: 2px solid rebeccapurple;
+	
 }
 .expense_btn{
 	width:150px;
@@ -57,13 +57,13 @@ body,input{
 }
 
 .month{
-	border: 2px solid blue;
+	
 	display: flex;
 	flex-direction: column;
 }
 
 .bottom_btn{
-	border-radius: 2px solid green;
+	
 	margin-top: 500px;
 	border-radius: 250px;
 	padding-top: 20px;
@@ -144,7 +144,7 @@ margin-top: 20px;
 .display_box{
 	height: 75vh;
 	margin-top: 70px;
-	border: 2px solid red;
+	
 
 }
 .serial_row{
@@ -181,7 +181,7 @@ margin-left: 20px;
 		width: 173px;
 		 margin-left: 300px;  
 		 margin-top: -60px;
-		border: 2px solid rebeccapurple;
+		
 		
 	}
 	.text{
@@ -207,7 +207,7 @@ margin-left: 20px;
 		margin-top: -70px;
 		font-size: 1rem;
 		font-weight: 300;
-		border: 2px solid  green;
+	
 	}
 	.expense_btn{
 		width:112px;
