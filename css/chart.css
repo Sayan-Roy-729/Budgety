@@ -31,27 +31,27 @@ width: 100%;
 	z-index: -1;
 }
 .chart_container{
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
     margin-top: -300px;
     margin-left: 300px;
     width:78vw;
     display: grid;
 }
 .first_container{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: grid;
     grid-template-columns: 30% 70%;
     color: white;
 }
 .second_container{
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 .chart_img{
 	height: 350px;
     width: 350px;
     margin-top: 10px;
     margin-left: -40px; 
-	border: 2px solid rebeccapurple;
+	/* border: 2px solid rebeccapurple; */
 }
 .nav{
     position: fixed;
@@ -126,34 +126,79 @@ width: 100%;
 }
 /* -------------Responsiveness----------------- */
 @media (max-width:900px) and (min-width:400px){
-    .nav{
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-         height:auto;
-    
+    .main_container{
+        height: 100vh;
+        width: 100vw;
+        border: 2px solid black;
     }
-   
-    .nav .links a{
-         /* margin-right: 25px; */
-         font-size: 12px;
-         font-weight: 600;
-        
-    } 
+    .nav{
+		display: inline-block;
+		/* flex-direction: column;  */
+		
+		padding: 20px;
+		height:11.5vh;
+		width: auto;
+	}
+	
+	.nav .links a{
+		text-align: center;
+		 font-size: 12px;
+		 font-weight: 600;
+		 margin-top: 20px;
+		 margin-left: 42px;
+		 margin-bottom: 3px;
+		
+	} 
+    .chart_container{
+        display: flex;
+        flex-direction: column;
+    }
     .wave_img{
-        width: 10vw;
-        height: 100%;
-        margin-top: 100px;
-        margin-left: -130px;
-        bottom: 0;
-        z-index: -1;
+        height: 100vh;
+        width: 40vw;
+        margin-bottom:470px;
+        margin-left: 250px;
+        border: 2px solid green;
+        
     }
     .wave_img2{
-        width: 100vw;
-        height: 100%;
-        margin-top: 100px;
-        margin-left: -130px;
-        bottom: 0;
-        z-index: -1;
+        height: 200vh;
+        width: 40vw;
+    }
+    .bootstrap_box{
+        display: flex;
+        flex-direction: row;
+        width: 30px;
+        height: 20px;
+        border: 2px solid green;
+    }
+    .card_body{
+        width: 20px;
+        height: 20px;
+    }
+    .chart_img{
+    height: 100px;
+    width: 100px;
+    margin-top: 200px;
+    margin-left: -40px; 
+    }
+    .footer_class_overview{
+        height: 30px;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 10px;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: -100px;
+        font-size: 0.8rem;
+    }
+    .footerlink{
+        font-weight: 400;
+    }
+    #footer_img{
+        height: 15px;
+        width: 15px;
     }
 }
