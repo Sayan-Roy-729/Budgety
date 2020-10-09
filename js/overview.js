@@ -8,28 +8,25 @@ document.getElementById('logout').addEventListener('click', function () {
     })
 })
 document.getElementById('dashboard').addEventListener('click', function () {
-//   window.location.href="dashboard.html"
-window.location.href = "index.html";
+
+    window.location.href = "index.html";
 })
 
-
-
-
+// *************************************************************************************
 let user_id = localStorage.getItem('userId');
-
+let ref = firebase.database().ref('/users/' + user_id);
 let expenseCategories = [];
 let incomeCategories = [];
-
 let expenseValues = [];
 let myLabels = [];
 
 
-firebase.database().ref('users/' + user_id).on('value', function (snapshot){
+firebase.database().ref('users/' + user_id).on('value', function (snapshot) {
     let data = snapshot.val();
 
     let totalExpense = document.querySelector('#debit');
     let totalIncome = document.querySelector('#credit');
-    
+
 
     let income = 0;
     let expense = 0;
@@ -55,7 +52,7 @@ firebase.database().ref('users/' + user_id).on('value', function (snapshot){
     };
     totalExpense.textContent = expense;
     totalIncome.textContent = income;
-    
+
 
 
     expenseCategories.forEach(element => {
@@ -69,65 +66,159 @@ firebase.database().ref('users/' + user_id).on('value', function (snapshot){
 
         expenseValues.push(amount);
 
-        
+
     });
 })
+// ***********************************************************************************
+ref.on('value', function (snapshot) {
+    let data = snapshot.val();
 
-// -------------------------------------------------------------------------------
+    let day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let expAmount = [0, 0, 0, 0, 0, 0, 0]
+    let credAmount = [0, 0, 0, 0, 0, 0, 0]
 
-// -------------------------------------------------------------------------------
 
-// -------------------------------------------------------------------------------
-let mychart = document.getElementById("bar_graph").getContext('2d');
-let piechart = document.getElementById("pie_chart").getContext('2d');
-let linechart = document.getElementById("line_chart").getContext('2d');
-let expense_chart = new Chart(mychart, {
-    type: 'bar',
-    data: {
-        labels: expenseCategories,
-        datasets: [{
-            label: ['category wise expense'],
-            backgroundColor: ['#0575E6'],
-            data: expenseValues,
-            backgroundColor: ['#800080', '#CB356B', '#007991', '#0f9b0f', '#8E0E00', '#8E54E9', '#FFE000']
-        }]
+    for (let id in data) {
+
+        let parts = data[id].date.split('-');
+        let expenseDate = new Date(parts[0], parts[1] - 1, parts[2]);
+        let expenseDay = expenseDate.getDay()
+        console.log(expenseDay);
+
+        if (data[id].type === 'credit') {
+
+            let index = expenseDay;
+            credAmount[index] += Number(data[id].amount);
+        }
+        else {
+            let index = expenseDay;
+            expAmount[index] += Number(data[id].amount)
+        }
+    }
+
+    let barchart = document.querySelector('#bar_graph').getContext('2d');
+
+    let bar_Chart = new Chart(barchart, {
+        type: 'bar',
+        data: {
+            labels: day,
+            datasets: [{
+                label: 'Day wise Expense',
+                data: 'expenseDay',
+                backgroundColor: '#007991'
+            }, {
+                label: 'Date wise Income',
+                data: credAmount,
+                backgroundColor: '#FFE000'
+            }]
+        }
+    })
+
+})
+// _______Line Chart_____________
+
+ref.on('value', function (snapshot) {
+
+    let data = snapshot.val();
+
+    let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    let expAmount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let credAmount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+ 
+
+    for (let id in data) {
+
+        let parts = data[id].date.split('-');
+        let expenseDate = new Date(parts[0], parts[1] - 1, parts[2]);
+        let expenseMonth = expenseDate.getMonth()
+
+        if (data[id].type === 'credit') {
+
+            let index = expenseMonth - 1;
+            credAmount[index] += Number(data[id].amount);
+        }
+        else {
+            let index = expenseMonth - 1;
+            expAmount[index] += Number(data[id].amount)
+        }
+    }
+
+
+    let lineChart = document.querySelector('#line_chart').getContext('2d');
+
+    let line_Chart = new Chart(lineChart, {
+        type: 'line',
+        data: {
+            labels: month,
+            datasets: [{
+                label: 'Month wise Expense',
+                data: expAmount,
+                backgroundColor:'#0f9b0f'
+            }, {
+                label: 'Month wise Income',
+                data: credAmount,
+                backgroundColor: '#8E54E9'
+            }]
+        }
+    })
+
+})
+// **************************************************
+ref.on('value', function (snapshot) {
+
+    let data = snapshot.val();
+
+    let credCategoryList = [];
+    let credAmount = [];
+    let expCategoryList = [];
+    let expAmount = [];
+
+
+    for (let id in data) {
+
+
+        if (data[id].type === 'credit') {
+
+            if (credCategoryList.includes(data[id].category)) {
+
+                let index = credCategoryList.indexOf(data[id].category);
+                credAmount[index] += Number(data[id].amount);
+
+            } else {
+                credCategoryList.push(data[id].category);
+                credAmount.push(Number(data[id].amount));
+            }
+        }
+
+        else {
+            if (expCategoryList.includes(data[id].category)) {
+
+                let index = expCategoryList.indexOf(data[id].category);
+                expAmount[index] += Number(data[id].amount);
+
+            } else {
+                expCategoryList.push(data[id].category);
+                expAmount.push(Number(data[id].amount));
+            }
+        }
 
     }
 
+    let PieChart = document.querySelector('#pie_chart').getContext('2d');
+
+    let pie_chart = new Chart(PieChart, {
+        type: 'pie',
+        data: {
+            labels: credCategoryList,
+            datasets: [{
+                label: 'Credit',
+                data: credAmount,
+                backgroundColor: ['#800080', '#CB356B', '#007991', '#0f9b0f', '#8E0E00', '#8E54E9', '#FFE000']
+                , label: 'Debit',
+                data: expAmount,
+                backgroundColor: ['#800080', '#CB356B', '#007991', '#0f9b0f', '#8E0E00', '#8E54E9', '#FFE000']
+
+            }]
+        }
+    })
 })
-let credit_chart = new Chart(piechart, {
-    type: 'pie',
-    data: {
-        labels: expenseCategories,
-        datasets: [{
-            label: 'Category Wise Expense',
-            data:['income','expense'],
-            backgroundColor: ['#0575E6', '#f12711']
-        }]
-
-    }
-
-})
-let line_chart = new Chart(linechart, {
-    type: 'line',
-    data: {
-        labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        datasets: [{
-            label: 'Expense in a day',
-            data: [40000, 3000, 3000, 6890, 900, 900, 5000],
-            backgroundColor:['#CB356B']
-        }]
-
-    }
-
-})
-
-// 
-function updateChartType() {
-    // Since you can't update chart type directly in Charts JS you must destroy original chart and rebuild
-    expenseChart.destroy();
-
-};
-
-
-
