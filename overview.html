@@ -33,58 +33,58 @@
 
         <img src="img/wave1.png" class="wave_img" alt="">
         <img src="img/wave2.png" class="wave_img2" alt="" style="height:100vh">
-        <div class="image_container" style="border: 2px solid purple; margin-top: -690px;">
-        <img class="chart_img" src="img/undraw_finance_0bdk.svg" alt="">
-        <div class="chart_container">
-            <div class="first_container" style="margin-left: 50px;">
-                <div class="bootstrap_box" style="display:block;border: 2px solid purple; margin-left: 70px;">
-                    <div class="card" style="width: 19rem; height: 8rem;background: #4e54c8;  /* fallback for old browsers */
+        <div class="image_container" style="margin-top: -690px;">
+            <img class="chart_img" src="img/undraw_finance_0bdk.svg" alt="">
+            <div class="chart_container">
+                <div class="first_container" style="margin-left: 50px;">
+                    <div class="bootstrap_box" style="display:block; margin-left: 70px;">
+                        <div class="card" style="width: 19rem; height: 8rem;background: #4e54c8;  /* fallback for old browsers */
                     background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
                     background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
                      ">
-                        <div class="card-body">
-                            <h4>Credit</h4>
-                            <h2 id="credit"></h2>
+                            <div class="card-body">
+                                <h4>Credit</h4>
+                                <h2 id="credit"></h2>
 
-                        </div>
-                    </div><br>
+                            </div>
+                        </div><br>
 
-                    <div class="card" style="width: 19rem; height: 8rem;background: #4e54c8;  /* fallback for old browsers */
+                        <div class="card" style="width: 19rem; height: 8rem;background: #4e54c8;  /* fallback for old browsers */
                     background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
                     background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-                    
 
                     ">
-                        <div class="card-body">
-                            <h4>Debit</h4>
-                            <h2 id="debit"></h2>
+                            <div class="card-body">
+                                <h4>Debit</h4>
+                                <h2 id="debit"></h2>
 
+                            </div>
                         </div>
                     </div>
+                    <div class="second_container" style="display: flex; flex-direction: row; grid-row-gap: 2rem;">
+                        <div class="col-md-6"
+                            style="height:40vh; margin-left: 100px; width: 30vw;">
+                            <canvas id="pie_chart">
+
+                            </canvas></div>
+
+                    </div>
+                    <div class="col-md-12"
+                        style="height:40vh;width: 100%; margin-left: 100px; margin-right: 50px;">
+                        <canvas id="bar_graph" style="height: 80vh;width: 50vw;">
+
+                        </canvas>
+
+                    </div>
+                    <div class="col-md-6" style=" height:40vh; margin-left: 150px;">
+                        <canvas id="line_chart" style="height: 80vh;">
+
+                        </canvas>
+                    </div>
                 </div>
-                <div class="second_container" style="display: flex; flex-direction: row; grid-row-gap: 2rem;">
-                    <div class="col-md-6" style="border: 2px solid red;height:40vh; margin-left: 100px; width: 30vw;">
-                        <canvas id="pie_chart">
 
-                        </canvas></div>
-
-                </div>
-                <div class="col-md-12"
-                    style="border: 2px solid red;height:40vh;width: 100%; margin-left: 100px; margin-right: 50px;">
-                    <canvas id="bar_graph" style="height: 80vh;width: 50vw;">
-
-                    </canvas>
-
-                </div>
-                <div class="col-md-6" style="border:2px solid purple; height:40vh; margin-left: 150px;">
-                    <canvas id="line_chart" style="height: 80vh;">
-
-                    </canvas>
-                </div>
             </div>
-
         </div>
-    </div>
         <div class="footer_class_overview" style="justify-content: center;text-align: center; margin-top: 10px;background: #4e54c8;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
