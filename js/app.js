@@ -9,21 +9,6 @@ signupbtn.addEventListener('click',function() {
 signinbtn.addEventListener('click', function() {
     container.classList.remove("sign-up-mode");
 });
-// _____________________________________________________
-// if(localStorage.getItem("name")===null){
-//     window.location.href="login.html";
-// }
-// document.querySelector("#user_dp").setAttribute("src",localStorage.getItem("picture").innerHTML=`style:height=100px; margin-top:50px;border:2px solid red`);
-// document.querySelector("#user_name").textContent=localStorage.getItem("name");
-// document.querySelector("logout").addEventListener('click',function(){
-//     firebase.auth().signOut().then(function(){
-//         localStorage.removeItem("name");
-//         localStorage.removeItem("picture");
-//         localStorage.removeItem("userId");
-//        window.location.href="login.html";
-//     }).catch(function(error){
-//         alert("some error occured")
-//     });
-// })
+
 
 
