@@ -104,7 +104,7 @@ ref.on('value', function (snapshot) {
             labels: day,
             datasets: [{
                 label: 'Day wise Expense',
-                data: 'expenseDay',
+                data: expAmount,
                 backgroundColor: '#007991'
             }, {
                 label: 'Day wise Income',
