@@ -107,7 +107,7 @@ ref.on('value', function (snapshot) {
                 data: 'expenseDay',
                 backgroundColor: '#007991'
             }, {
-                label: 'Date wise Income',
+                label: 'Day wise Income',
                 data: credAmount,
                 backgroundColor: '#FFE000'
             }]
