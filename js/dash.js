@@ -30,7 +30,7 @@ firebase.database().ref('users/' + user_id).once('value', function (snapshot) {
      <td>${data[id].amount}</td>
      <td>${data[id].category}</td>
      <td>${data[id].date}</td>
-<td>${data[id].time}</td>
+     <td>${data[id].time}</td>
      <td > <i id="edit_data" style="color:green;cursor:pointer" class="material-icons">border_color</i></td>
      <td><i id="delete_data" style="color:red;cursor:pointer;" class="material-icons">delete_forever</i> </td>
  </tr>`
